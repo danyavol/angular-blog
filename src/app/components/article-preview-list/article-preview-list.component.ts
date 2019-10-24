@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticlesService } from '../../services/articles.service';
 
 @Component({
   selector: 'app-article-preview-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlePreviewListComponent implements OnInit {
 
-  constructor() { }
+  list: any[];
+
+  constructor(private articlesServices: ArticlesService) { }
 
   ngOnInit() {
+    this.list = this.articlesServices.getArticles();
   }
 
 }

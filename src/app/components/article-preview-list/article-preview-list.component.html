@@ -1,1 +1,5 @@
-<p>article-preview-list works!</p>
+<div *ngFor="let article of list">
+    <a [routerLink]="['articles/', article.id]">
+            <app-article-preview [article]="article"></app-article-preview>
+    </a>  
+</div>
