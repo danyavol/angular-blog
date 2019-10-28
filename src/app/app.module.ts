@@ -11,6 +11,21 @@ import { ArticleComponent } from './components/article/article.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { ResumePageComponent } from './components/resume-page/resume-page.component';
 
+import * as firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCqM80hAt2AtpVgW_ImxkTkpZZ0eGA9hWA",
+  authDomain: "angular-blog-9b7e8.firebaseapp.com",
+  databaseURL: "https://angular-blog-9b7e8.firebaseio.com",
+  storageBucket: "angular-blog-9b7e8.appspot.com"
+};
+firebase.initializeApp(firebaseConfig);
+let database = 	firebase.database().ref();
+console.log(database);
+
+
 
 const appRoutes = [
   { path: 'articles', component: ArticlePreviewListComponent },
