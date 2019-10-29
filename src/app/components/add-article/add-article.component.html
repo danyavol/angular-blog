@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" >
+    <input [(ngModel)]="title" type="text" name="title" id="title" />
+    <textarea [(ngModel)]="content" name="content" id="content" cols="30"></textarea>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    <li *ngFor="let article of articles | async">
+        {{ article.title }}
+        {{ article.content }}
+    </li>
+</ul>

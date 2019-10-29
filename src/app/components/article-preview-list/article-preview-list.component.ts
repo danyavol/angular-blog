@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../../services/articles.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-article-preview-list',
@@ -8,7 +9,7 @@ import { ArticlesService } from '../../services/articles.service';
 })
 export class ArticlePreviewListComponent implements OnInit {
 
-  list: any[];
+  list: Observable<any[]>;
 
   constructor(private articlesServices: ArticlesService) { }
 

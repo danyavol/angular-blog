@@ -5,25 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { ArticlePreviewComponent } from './components/article-preview/article-preview.component';
 import { ArticlePreviewListComponent } from './components/article-preview-list/article-preview-list.component';
 import { ArticleComponent } from './components/article/article.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { ResumePageComponent } from './components/resume-page/resume-page.component';
+import { AddArticleComponent } from './components/add-article/add-article.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
 
-import * as firebase from "firebase/app";
-import "firebase/database";
-import "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCqM80hAt2AtpVgW_ImxkTkpZZ0eGA9hWA",
-  authDomain: "angular-blog-9b7e8.firebaseapp.com",
-  databaseURL: "https://angular-blog-9b7e8.firebaseio.com",
-  storageBucket: "angular-blog-9b7e8.appspot.com"
-};
-firebase.initializeApp(firebaseConfig);
-let database = 	firebase.database().ref();
-console.log(database);
+import { AuthGuard } from './guards/auth/auth.guard';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+
+
+
 
 
 
@@ -31,7 +32,10 @@ const appRoutes = [
   { path: 'articles', component: ArticlePreviewListComponent },
   { path: 'articles/:id', component: ArticleComponent },
   { path: '', component: HomePageComponent },
-  { path: 'resume', component: ResumePageComponent }
+  { path: 'resume', component: ResumePageComponent },
+  { path: 'add', component: AddArticleComponent },
+  { path: 'admin', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -41,12 +45,19 @@ const appRoutes = [
     ArticlePreviewListComponent,
     ArticleComponent,
     HomePageComponent,
-    ResumePageComponent
+    ResumePageComponent,
+    AddArticleComponent,
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
