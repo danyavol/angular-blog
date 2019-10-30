@@ -18,7 +18,7 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.article = this.articlesService.getArticles().filter((item) => item.id == this.id)[0];
+    //this.article = this.articlesService.getArticles().filter((item) => item.id == this.id)[0];
   }
 
 }
