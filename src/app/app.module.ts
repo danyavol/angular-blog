@@ -22,6 +22,9 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { NgIfAdminDirective } from './directive/ng-if-admin.directive';
+import { TimeToReadPipe } from './pipes/timeToRead/time-to-read.pipe';
+import { DaysAgoPipe } from './pipes/daysAgo/days-ago.pipe';
 
 
 
@@ -48,7 +51,10 @@ const appRoutes = [
     ResumePageComponent,
     AddArticleComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    NgIfAdminDirective,
+    TimeToReadPipe,
+    DaysAgoPipe
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-article-preview',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ArticlePreviewComponent implements OnInit {
 
   @Input() article;
+  @Output() delete = new EventEmitter();
 
   constructor() { }
 

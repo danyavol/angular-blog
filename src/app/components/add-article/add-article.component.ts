@@ -12,6 +12,7 @@ export class AddArticleComponent implements OnInit {
   articles: Observable<any[]>;
   title: string;
   content: string;
+  image: string;
 
   constructor(private db: ArticlesService) {
       this.articles = db.getArticles();
