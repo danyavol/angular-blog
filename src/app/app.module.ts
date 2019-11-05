@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 import { NgIfAdminDirective } from './directive/ng-if-admin.directive';
 import { TimeToReadPipe } from './pipes/timeToRead/time-to-read.pipe';
 import { DaysAgoPipe } from './pipes/daysAgo/days-ago.pipe';
+import { NgIfNotLoggedInDirective } from './directive/ngIfNotLoggedIn/ng-if-not-logged-in.directive';
 
 
 
@@ -36,7 +37,7 @@ const appRoutes = [
   { path: 'articles/:id', component: ArticleComponent },
   { path: '', component: HomePageComponent },
   { path: 'resume', component: ResumePageComponent },
-  { path: 'add', component: AddArticleComponent },
+  { path: 'add', component: AddArticleComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent }
 ];
@@ -54,7 +55,8 @@ const appRoutes = [
     AdminComponent,
     NgIfAdminDirective,
     TimeToReadPipe,
-    DaysAgoPipe
+    DaysAgoPipe,
+    NgIfNotLoggedInDirective
   ],
   imports: [
     BrowserModule,

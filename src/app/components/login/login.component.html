@@ -1,13 +1,19 @@
-<p>Login</p>
 
-<form (ngSubmit)="onSubmit()">
-    <div>
-        <input required type="text" [formControl]="username"/>
+<div class="card login-form" style="margin: 10px">
+    <div class="card-header">
+        <h2 style="font-size: 24px">Log In</h2>
     </div>
-    <div>
-        <input required type="password" [formControl]="password"/>
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" class="">
+            <div class="form-group">
+                <label for="username">Логин</label>
+                <input required type="text" class="form-control" id="username" name="username" [formControl]="username" placeholder="Enter login">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input required type="password" class="form-control" id="password" name="password" [formControl]="password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
     </div>
-    <div>
-        <button type="submit">Login</button>
-    </div> 
-</form>
+</div>

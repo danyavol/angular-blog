@@ -1,11 +1,30 @@
-aside ul li {
-    list-style-type: none;
-    margin: 15px 0;
-    a {
-        padding: 5px 10px;
-        display: inline-block;
-        font-size: 1.2rem;
-        text-decoration: none;
-        font-weight: bold;
+aside {
+    padding: 10px;
+
+    h2 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    p {
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    ul {
+        padding: 0;
+        li {
+            list-style-type: none;
+            margin: 15px 0;
+            padding-left: 30px;
+            a {
+                padding: 5px 10px;
+                display: inline-block;
+                font-size: 1.2rem;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
     }
 }

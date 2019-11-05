@@ -1,4 +1,7 @@
 <aside>
+  <h2>DANIIL'S BLOG</h2>
+  <p>Hi, my name is Daniil Doe. Briefly introduce yourself here. You can also provide a link to the about page.</p>
+  <hr >
   <ul>
     <li>
         <a href="" alt="">Home</a>
@@ -9,11 +12,15 @@
     <li>
       <a href="resume" alt="">CE</a>
     </li>
+    <hr>
     <li>
-        <a href="add" alt="">add</a>
+        <a href="add" *appNgIfAdmin alt="">Add new article</a>
     </li>
     <li>
-        <a href="login" alt="">login</a>
+        <a href="login" *appNgIfNotLoggedIn alt="">Login</a>
+    </li>
+    <li>
+      <a href="" *appNgIfAdmin alt="" (ngOnClick)="console.log(1)">Log Out</a>
     </li>
   </ul>
 </aside>
