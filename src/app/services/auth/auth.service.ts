@@ -8,28 +8,30 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  isAdmin: boolean = false;
-  private dataSource = new BehaviorSubject<any>(this.isAdmin);
-  data = this.dataSource.asObservable();
+  ls = localStorage.getItem('auth') === 'true' ? true : false;
+  private dataSource = new BehaviorSubject<any>(this.ls);
+  isAdmin = this.dataSource.asObservable();
 
  
   constructor(private router: Router) { }
 
   loginUser(username, password) {
      if (username === environment.admin.username && password === environment.admin.password) {
-       this.isAdmin = true;
        console.log('logged in');
-       this.dataSource.next(this.isAdmin);
+       localStorage.setItem('auth', 'true');
+       this.dataSource.next(true);
        this.router.navigate(['/']);
      } else {
-       this.isAdmin = false;
+      localStorage.setItem('auth', 'false');
+       this.dataSource.next(false);
      }
   }
 
   logoutUser() {
-    this.isAdmin = false;
     console.log('logged out');
-    this.dataSource.next(this.isAdmin);
+    localStorage.setItem('auth', 'false');
+    this.dataSource.next(false);
+    this.router.navigate(['/']);
   }
 
   checkIfAdmin() {

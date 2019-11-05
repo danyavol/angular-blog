@@ -13,11 +13,13 @@ export class NgIfNotLoggedInDirective implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.authService.checkIfAdmin()) {
-      this.viewContainer.clear();
-    } else {
-      this.viewContainer.createEmbeddedView(this.templateRef); 
-    }
+    this.authService.isAdmin.subscribe(data => {
+      if (data) {
+        this.viewContainer.clear();
+      } else {
+        this.viewContainer.createEmbeddedView(this.templateRef); 
+      }
+    });
   }
 
 }

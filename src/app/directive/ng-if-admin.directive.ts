@@ -15,11 +15,18 @@ export class NgIfAdminDirective implements OnInit {
     ) { }
 
   ngOnInit() {
-    if (this.authService.checkIfAdmin()) {
-      this.viewContainer.createEmbeddedView(this.templateRef);
-    } else {
-      this.viewContainer.clear();
-    }
+    // if (this.authService.checkIfAdmin()) {
+    //   this.viewContainer.createEmbeddedView(this.templateRef);
+    // } else {
+    //   this.viewContainer.clear();
+    // }
+    this.authService.isAdmin.subscribe(data => {
+      if (data) {
+        this.viewContainer.createEmbeddedView(this.templateRef); 
+      } else {
+        this.viewContainer.clear();
+      }
+    });
   }
 
 }
