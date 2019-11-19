@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { NgIfAdminDirective } from './directive/ng-if-admin.directive';
 import { TimeToReadPipe } from './pipes/timeToRead/time-to-read.pipe';
 import { DaysAgoPipe } from './pipes/daysAgo/days-ago.pipe';
 import { NgIfNotLoggedInDirective } from './directive/ngIfNotLoggedIn/ng-if-not-logged-in.directive';
+import { HttpExampleComponent } from './components/http-example/http-example.component';
 
 
 
@@ -56,7 +58,8 @@ const appRoutes = [
     NgIfAdminDirective,
     TimeToReadPipe,
     DaysAgoPipe,
-    NgIfNotLoggedInDirective
+    NgIfNotLoggedInDirective,
+    HttpExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ const appRoutes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
